@@ -1,8 +1,14 @@
 import json
+import sys
 from config import json_path as JSONPath
 
-URLInput = "asdf.com"
+#URLInput = "asdf.com"
 URLShort = "https://www.asko.tt/asdfcom1"  
+
+def SysArg1AsURLInput():
+    URLInput = sys.argv[1]
+    return URLInput
+
 
 def URLPairingAndTurnToDictionary(OriginalURL, ShortenedURL):
     PairedURL = {"Original URL" : str(OriginalURL), "Shortened URL": str(ShortenedURL)}
@@ -34,7 +40,7 @@ def ShortenedURLOverlapCheck(URLShort, URLJSON):
     else:
         return None
 
-
+URLInput = SysArg1AsURLInput()
 PairedURL = URLPairingAndTurnToDictionary(URLInput, URLShort)
 URLJSON = JSONTableLoad()
 ShortenedURLOverlapCheck(URLShort,URLJSON)
